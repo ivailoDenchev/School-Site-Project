@@ -26,6 +26,18 @@ namespace FragranceFusion.Controllers
                           Problem("Entity set 'ApplicationDbContext.Product'  is null.");
         }
 
+        // GET: Products/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+
+        // PoST: Products/ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(String SearchName)
+        {
+            return View("Index",await _context.Product.Where(j => j.Brand.Contains(SearchName)).ToListAsync());
+        }
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
