@@ -21,20 +21,20 @@ namespace FragranceFusion.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-              return _context.Product != null ? 
-                          View(await _context.Product.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Product'  is null.");
+              return _context.Products != null ? 
+                          View(await _context.Products.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Products'  is null.");
         }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var products = await _context.Product
+            var products = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (products == null)
             {
@@ -69,12 +69,12 @@ namespace FragranceFusion.Controllers
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var products = await _context.Product.FindAsync(id);
+            var products = await _context.Products.FindAsync(id);
             if (products == null)
             {
                 return NotFound();
@@ -120,12 +120,12 @@ namespace FragranceFusion.Controllers
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var products = await _context.Product
+            var products = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (products == null)
             {
@@ -140,14 +140,14 @@ namespace FragranceFusion.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Product == null)
+            if (_context.Products == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Product'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
             }
-            var products = await _context.Product.FindAsync(id);
+            var products = await _context.Products.FindAsync(id);
             if (products != null)
             {
-                _context.Product.Remove(products);
+                _context.Products.Remove(products);
             }
             
             await _context.SaveChangesAsync();
@@ -156,7 +156,7 @@ namespace FragranceFusion.Controllers
 
         private bool ProductsExists(int id)
         {
-          return (_context.Product?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
