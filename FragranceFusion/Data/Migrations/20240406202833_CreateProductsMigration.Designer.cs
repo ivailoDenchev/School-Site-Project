@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FragranceFusion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240405063035_ProductsController")]
-    partial class ProductsController
+    [Migration("20240406202833_CreateProductsMigration")]
+    partial class CreateProductsMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
