@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceFusion", "FragranceFusion\FragranceFusion.csproj", "{0F420348-4B39-4BF7-A893-54AEA23FF7B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceFusion", "FragranceFusion\FragranceFusion.csproj", "{C5A73EC1-F153-4770-A2B9-FCD8DAD22237}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0F420348-4B39-4BF7-A893-54AEA23FF7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F420348-4B39-4BF7-A893-54AEA23FF7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F420348-4B39-4BF7-A893-54AEA23FF7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F420348-4B39-4BF7-A893-54AEA23FF7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A73EC1-F153-4770-A2B9-FCD8DAD22237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A73EC1-F153-4770-A2B9-FCD8DAD22237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A73EC1-F153-4770-A2B9-FCD8DAD22237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A73EC1-F153-4770-A2B9-FCD8DAD22237}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {92E0787F-A1C9-4779-A53A-7F8BF825B109}
+		SolutionGuid = {7E5CCBBE-25B3-4D53-8095-3FFCC43CC1C2}
 	EndGlobalSection
 EndGlobal
