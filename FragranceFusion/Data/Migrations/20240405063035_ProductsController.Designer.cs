@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FragranceFusion.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240327192600_CreateMigrationProducts")]
-    partial class CreateMigrationProducts
+    [Migration("20240405063035_ProductsController")]
+    partial class ProductsController
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace FragranceFusion.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("FragranceFusion.Data.Product", b =>
+            modelBuilder.Entity("FragranceFusion.Data.Products", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,6 +42,10 @@ namespace FragranceFusion.Data.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<string>("imgPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

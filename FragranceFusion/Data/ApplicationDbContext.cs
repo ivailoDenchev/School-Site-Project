@@ -10,6 +10,6 @@ namespace FragranceFusion.Data
             : base(options)
         {
         }
-        public DbSet<FragranceFusion.Data.Product>? Product { get; set; }
+        public DbSet<FragranceFusion.Data.Products>? Product { get; set; }
     }
 }

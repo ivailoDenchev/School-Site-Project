@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FragranceFusion.Data;
-using Microsoft.AspNetCore.Authorization;
 
 namespace FragranceFusion.Controllers
 {
@@ -27,18 +26,6 @@ namespace FragranceFusion.Controllers
                           Problem("Entity set 'ApplicationDbContext.Product'  is null.");
         }
 
-        // GET: Products/ShowSearchForm
-        public async Task<IActionResult> ShowSearchForm()
-        {
-            return View();
-        }
-
-        // PoST: Products/ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(String SearchName)
-        {
-            return View("Index",await _context.Product.Where(j => j.Brand.Contains(SearchName)).ToListAsync());
-        }
-
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -47,18 +34,17 @@ namespace FragranceFusion.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var products = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (products == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(products);
         }
 
         // GET: Products/Create
-        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -69,19 +55,18 @@ namespace FragranceFusion.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Brand,Price")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Brand,Price,imgPath")] Products products)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(products);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(products);
         }
 
         // GET: Products/Edit/5
-        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Product == null)
@@ -89,12 +74,12 @@ namespace FragranceFusion.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
-            if (product == null)
+            var products = await _context.Product.FindAsync(id);
+            if (products == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(products);
         }
 
         // POST: Products/Edit/5
@@ -102,9 +87,9 @@ namespace FragranceFusion.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Brand,Price")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Brand,Price,imgPath")] Products products)
         {
-            if (id != product.Id)
+            if (id != products.Id)
             {
                 return NotFound();
             }
@@ -113,12 +98,12 @@ namespace FragranceFusion.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(products);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!ProductsExists(products.Id))
                     {
                         return NotFound();
                     }
@@ -129,11 +114,10 @@ namespace FragranceFusion.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(products);
         }
 
         // GET: Products/Delete/5
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Product == null)
@@ -141,14 +125,14 @@ namespace FragranceFusion.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var products = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (products == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(products);
         }
 
         // POST: Products/Delete/5
@@ -160,17 +144,17 @@ namespace FragranceFusion.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Product'  is null.");
             }
-            var product = await _context.Product.FindAsync(id);
-            if (product != null)
+            var products = await _context.Product.FindAsync(id);
+            if (products != null)
             {
-                _context.Product.Remove(product);
+                _context.Product.Remove(products);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool ProductsExists(int id)
         {
           return (_context.Product?.Any(e => e.Id == id)).GetValueOrDefault();
         }
