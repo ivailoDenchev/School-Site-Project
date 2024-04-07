@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using FragranceFusion.Data;
 
 namespace FragranceFusion.Data
 {
@@ -9,5 +10,6 @@ namespace FragranceFusion.Data
             : base(options)
         {
         }
+        public DbSet<FragranceFusion.Data.Product>? Product { get; set; }
     }
 }
