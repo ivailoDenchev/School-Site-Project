@@ -1,0 +1,15 @@
+﻿@model FragranceFusion.Data.Product
+
+@{
+	var imgText = "";
+	if (Model.imgPath.EndsWith("0.jpg")){
+		imgText = "No  image for " + Model.Brand.Trim() + " "  + Model.Name.Trim();
+	}
+	else
+	{
+		imgText = "Image of " + Model.Brand.Trim() + " " + Model.Name.Trim();
+	}
+}
+
+
+<img src="@Model.imgPath" class="img-fluid" alt="@imgText" title="@imgText"/>
