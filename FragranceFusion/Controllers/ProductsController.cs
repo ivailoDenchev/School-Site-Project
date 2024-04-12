@@ -21,15 +21,13 @@ namespace FragranceFusion.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-              return _context.Product != null ? 
-                          View(await _context.Product.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Product'  is null.");
+            return View(await _context.Product.ToListAsync());
         }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -69,7 +67,7 @@ namespace FragranceFusion.Controllers
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -120,7 +118,7 @@ namespace FragranceFusion.Controllers
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -140,23 +138,18 @@ namespace FragranceFusion.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Product == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Product'  is null.");
-            }
             var product = await _context.Product.FindAsync(id);
             if (product != null)
             {
                 _context.Product.Remove(product);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool ProductExists(int id)
         {
-          return (_context.Product?.Any(e => e.Id == id)).GetValueOrDefault();
+            return _context.Product.Any(e => e.Id == id);
         }
     }
 }
