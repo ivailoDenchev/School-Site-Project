@@ -2,7 +2,7 @@
     font-family: Constantia, sans-serif
 }
 
-button {
+.button {
     border: none;
     outline: 0;
     padding: 10px;
@@ -19,7 +19,6 @@ button {
     background-color: lavender;
 }
 
-/* Team Section */
 
 .team {
     padding: 30px 0;
@@ -86,12 +85,13 @@ button {
     color: #555;
 }
 
-/* Footer */
+
 footer {
     background-color: #222;
     color: white;
     text-align: center;
     padding: 3px 0;
+    font-size: 24px;
 }
 
 @media (max-width: 768px) {
@@ -143,4 +143,9 @@ footer {
     .team {
         margin: 0 1rem;
     }
+    .aboutus-container{
+        font-size: 16px;
+    }
+      
+    
 }
